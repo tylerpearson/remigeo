@@ -18,9 +18,14 @@ class MessagesController < ApplicationController
   def show
     @message = Message.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @message }
+    if current_user.id != @message.user_id
+      redirect_to root_path
+    else
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @message }
+      end
+
     end
   end
 
@@ -38,6 +43,9 @@ class MessagesController < ApplicationController
   # GET /messages/1/edit
   def edit
     @message = Message.find(params[:id])
+    if current_user.id != @message.user_id
+      redirect_to root_path
+    end
   end
 
   # POST /messages
@@ -66,13 +74,17 @@ class MessagesController < ApplicationController
   def update
     @message = Message.find(params[:id])
 
-    respond_to do |format|
-      if @message.update_attributes(params[:message])
-        format.html { redirect_to @message, notice: 'Message was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
+    if current_user.id != @message.user_id
+      redirect_to root_path
+    else
+      respond_to do |format|
+        if @message.update_attributes(params[:message])
+          format.html { redirect_to @message, notice: 'Message was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @message.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -88,4 +100,5 @@ class MessagesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end
