@@ -7,6 +7,7 @@ class StaticPagesController < ApplicationController
   end
 
   def home
+    @messages = current_user.messages.limit(5)
     respond_to do |format|
       format.html # home.html.erb
     end

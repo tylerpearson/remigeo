@@ -1,6 +1,20 @@
 <div class="home-content">
   <% if user_signed_in? %>
-    <p>This would probably be a map of nearby messages and recently created</p>
+    <p>Recently created</p>
+    <ul>
+    <% @messages.each do |message| %>
+      <li>
+        <%= message.content %></td>
+        <%= message.location.title %>
+        <%= link_to 'Show', message %>
+      </tr>
+    <% end %>
+    </ul>
+
+    <div class="page-links">
+      <%= link_to "See All Messages", messages_path, class: "button" %>
+    </div>
+
   <% else %>
       <p>Remigeo is a way to leave yourself personal messages and reminders based on location.</p>
       <%= link_to "Sign Up", signup_path, class: "button big-button" %>
