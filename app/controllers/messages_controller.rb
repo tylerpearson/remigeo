@@ -103,9 +103,13 @@ class MessagesController < ApplicationController
 
 
   def nearby
+    if params[:search].present?
+      @locations = Message.locations.near(params[:search], 1, :order => :distance)
+    end
 
     respond_to do |format|
-
+      format.json { render json: @location.errors, status: :unprocessable_entity }
+      format.html
     end
 
   end

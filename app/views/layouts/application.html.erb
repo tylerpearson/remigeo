@@ -11,6 +11,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
+  <% if Rails.env.production? %>
+    <script src="//use.typekit.net/gsg6lie.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
+  <% end %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>

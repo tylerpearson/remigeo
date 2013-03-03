@@ -2,6 +2,7 @@ MessageLocation::Application.routes.draw do
 
   resources :messages
 
+  get "/nearby", :to => "messages#nearby"
 
   devise_for :users
 

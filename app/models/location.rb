@@ -6,6 +6,8 @@ class Location < ActiveRecord::Base
 
   before_create :add_location_info
 
+  reverse_geocoded_by :latitude, :longitude
+
   has_many :messages
   has_many :users, :through => :messages
 

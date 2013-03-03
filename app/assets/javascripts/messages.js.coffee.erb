@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-clientId = "<%= ENV['FOURSQUARE_ID'] %>"
+clientId     = "<%= ENV['FOURSQUARE_ID'] %>"
 clientSecret = "<%= ENV['FOURSQUARE_SECRET'] %>"
 
 
@@ -15,8 +15,8 @@ $(document).ready ->
 
     startPos = undefined
     navigator.geolocation.getCurrentPosition ((position) ->
-      startPos = position
-      latitude = startPos.coords.latitude
+      startPos  = position
+      latitude  = startPos.coords.latitude
       longitude = startPos.coords.longitude
 
     ), (error) ->
@@ -70,18 +70,17 @@ $(document).ready ->
   $map.gmap().bind "init", ->
 
     $.getJSON "/messages.json", (data) ->
-      console.log(data)
-      console.log(data.length)
 
-      for message in data
-        console.log message.content
-        $map.gmap("addMarker",
-          position: new google.maps.LatLng(message.location.latitude, message.location.longitude)
-          bounds: true
-        ).click ->
-          $map.gmap "openInfoWindow",
-            content: "<b>#{message.location.title}</b><br> #{message.content}"
-          , this
+      if data.length
+
+        for message in data
+          $map.gmap("addMarker",
+            position: new google.maps.LatLng(message.location.latitude, message.location.longitude)
+            bounds: true
+          ).click ->
+            $map.gmap "openInfoWindow",
+              content: "<b>#{message.location.title}</b><br> #{message.content}"
+            , this
 
 
 
