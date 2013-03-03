@@ -7,7 +7,7 @@ clientSecret = "QJJOUTWQ2RBIMQJ3ED3RWZBIDGG4ZLEXK3LJQSM3LGU4KOON"
 
 $(document).on 'ready page:load', ->
 
-  latitude = 0
+  latitude  = 0
   longitude = 0
 
   if navigator.geolocation
@@ -44,7 +44,6 @@ $(document).on 'ready page:load', ->
         searchLocations(searchQuery,latitude,longitude)
 
   else
-
     alert "Please use a browser that supports geolocation"
 
 
@@ -88,7 +87,6 @@ $(document).on 'ready page:load', ->
 
 
   # for the home page!
-
   showPosition = (position) ->
 
     $homeMap = $("#home-map")
@@ -163,9 +161,11 @@ getNearbyLocations = (lat,long) ->
 
       $(locations.join("")).appendTo($locations)
 
+
 # meters to feet
 metersToFeet = (meters) ->
   Math.round(parseFloat(meters * 3.28084))
+
 
 # the date
 Date::yyyymmdd = ->

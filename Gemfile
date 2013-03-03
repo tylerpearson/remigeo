@@ -5,8 +5,6 @@ gem 'rails', '3.2.11'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git
 
-gem 'figaro'
-gem 'json'
 
 # authentication
 gem 'devise'
@@ -15,21 +13,22 @@ gem "cancan"
 # geo
 gem 'geocoder'
 
+# other
+gem "heroku", "~> 2.35.0"
+gem 'turbolinks'
+gem 'figaro'
+gem 'json'
+gem 'less-rails'
+
 #development
 group :development do
   gem "better_errors"
   gem 'sqlite3'
 end
 
-gem "heroku", "~> 2.35.0"
-
-gem 'turbolinks'
-
 group :production do
   gem 'pg'
 end
-
-gem 'less-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
