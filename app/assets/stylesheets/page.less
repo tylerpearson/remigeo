@@ -1,7 +1,7 @@
 #main {
   .fade-in(.25s);
   padding: 30px 0;
-  h2:first-child {
+  h2:first-child, h1:first-child {
     font-size: 26px;
     margin-bottom: 25px;
   }
@@ -9,17 +9,14 @@
 
 
 form {
-  width: 96%;
-  margin: 0 auto;
-  max-width: 500px;
-  margin-bottom: 30px;
+  margin: 0 auto 30px;
   input {
     font-family: @proxima;
   }
   div {
     margin-bottom: 15px;
   }
-  input[type="text"], input[type="email"], input[type="password"] {
+  input[type="text"], input[type="email"], input[type="password"], textarea {
     border-radius: 3px;
     padding: 10px;
     font-size: 18px;
@@ -32,6 +29,9 @@ form {
     &:focus {
       border: solid 1px @green;
     }
+  }
+  textarea {
+    height: 200px;
   }
   label {
     font-weight: bold;

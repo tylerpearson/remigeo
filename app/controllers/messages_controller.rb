@@ -1,8 +1,11 @@
 class MessagesController < ApplicationController
+
+  before_filter :authenticate_user!
+
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.all
+    @messages = current_user.messages
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,6 +44,7 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(params[:message])
+    @message.user_id = current_user.id
 
     respond_to do |format|
       if @message.save
