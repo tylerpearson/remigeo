@@ -49,7 +49,7 @@ module MessageLocation
 
 
     # include fonts
-    #config.assets.paths << "#{Rails.root}/app/assets/fonts"
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
 
     # Enforce whitelist mode for mass assignment.
     # This will create an empty whitelist of attributes available for mass-assignment for all models
