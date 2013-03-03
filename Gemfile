@@ -12,6 +12,9 @@ gem 'json'
 gem 'devise'
 gem "cancan"
 
+# geo
+gem 'geocoder'
+
 #development
 group :development do
   gem "better_errors"

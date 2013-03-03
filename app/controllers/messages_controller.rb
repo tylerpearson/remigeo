@@ -101,4 +101,13 @@ class MessagesController < ApplicationController
     end
   end
 
+
+  def nearby
+
+    respond_to do |format|
+
+    end
+
+  end
+
 end

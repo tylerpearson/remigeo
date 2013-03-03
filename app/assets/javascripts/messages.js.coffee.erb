@@ -80,7 +80,7 @@ $(document).ready ->
           bounds: true
         ).click ->
           $map.gmap "openInfoWindow",
-            content: message.content
+            content: "<b>#{message.location.title}</b><br> #{message.content}"
           , this
 
 
