@@ -103,6 +103,9 @@ $(document).ready ->
       mapOptions =
         zoom: 14
         mapTypeId: google.maps.MapTypeId.ROADMAP
+        panControl: true
+        zoomControl: true
+        scaleControl: true
 
       homeMap = new google.maps.Map(document.getElementById("home-map"), mapOptions)
 
@@ -122,10 +125,10 @@ $(document).ready ->
         marker = new google.maps.Marker({
           position: messageLocation
           map: homeMap
-          panControl: true
-          zoomControl: true
-          scaleControl: true
         })
+
+        google.maps.event.addListener marker, "click", ->
+          window.location = "messages/#{message.messages[0].id}"
 
         lat = parseFloat(message.latitude)
         long = parseFloat(message.longitude)
@@ -152,7 +155,10 @@ searchLocations = (name,lat,long) ->
     locations = []
 
     $.each data['response']['minivenues'], (key, val) ->
-      locations.push "<option value=\"#{val.id}\">#{val.name} (#{val.location.address}, #{val.location.city})</option>"
+      if val.location.address
+        locations.push "<option value=\"#{val.id}\">#{val.name} (#{val.location.address}, #{val.location.city})</option>"
+      else
+        locations.push "<option value=\"#{val.id}\">#{val.name} (#{val.location.city})</option>"
 
     $locations = $("#search-locations-results")
     $locations.html('')
