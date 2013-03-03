@@ -5,9 +5,23 @@ gem 'rails', '3.2.11'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git
 
-gem 'sqlite3'
+gem 'figaro'
+gem 'json'
 
+# authentication
 gem 'devise'
+
+#development
+group :development do
+  gem "better_errors"
+  gem 'sqlite3'
+end
+
+# production
+group :production do
+  gem 'pg'
+  gem 'thin'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
