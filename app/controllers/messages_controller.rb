@@ -103,11 +103,10 @@ class MessagesController < ApplicationController
 
   # GET nearby.json
   def nearby
-    #@locations = Message.locations.near(params[:search], 1, :order => :distance)
-    @messages = current_user.messages
+    @locations = current_user.locations.near("Durham", 1, :order => :distance)
 
     respond_to do |format|
-      format.json { render json: @messages.to_json(:include => :location) }
+      format.json { render json: @locations.to_json(:include => :messages) }
       format.html
     end
 

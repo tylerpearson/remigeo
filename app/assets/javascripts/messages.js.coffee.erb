@@ -115,24 +115,24 @@ $(document).ready ->
 
       fullBounds = new google.maps.LatLngBounds()
 
-      for venue in messages
+      for message in messages
 
-        venueLocation = new google.maps.LatLng(venue.location.latitude, venue.location.longitude)
+        messageLocation = new google.maps.LatLng(message.latitude, message.longitude)
 
         marker = new google.maps.Marker({
-          position: venueLocation
+          position: messageLocation
           map: homeMap
           panControl: true
           zoomControl: true
           scaleControl: true
         })
 
-        lat = parseFloat(venue.location.latitude)
-        long = parseFloat(venue.location.longitude)
+        lat = parseFloat(message.latitude)
+        long = parseFloat(message.longitude)
         point = new google.maps.LatLng(lat, long)
         fullBounds.extend point
 
-      homeMap.fitBounds(fullBounds);
+      #homeMap.fitBounds(fullBounds);
 
 clearToggles = () ->
 

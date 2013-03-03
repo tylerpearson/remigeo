@@ -9,16 +9,16 @@
 
   </div>
 
-  <% @messages.each do |message| %>
+  <% @locations.each do |location| %>
   <div class="bubble-note">
-    <%= link_to message do %>
+    <%= link_to :controller => "messages", :action => "show", :id => location.messages[0].id do %>
       <div class="note-box">
         <div class="note-box-content">
-          <p><%= message.content %></p>
+          <p><%= location.messages[0].content %></p>
         </div>
       </div><!-- end .note-box -->
       <div class="note-meta">
-        <p>Left <span><%= time_ago_in_words(message.created_at) %> ago</span> for <span class="location-title"><%= message.location.title %></span></p>
+        <p>Left <span><%= time_ago_in_words(location.messages[0].created_at) %> ago</span> for <span class="location-title"><%= location.title %></span></p>
       </div>
     <% end %>
   </div><!--end .bubble-note -->
@@ -30,7 +30,7 @@
 
   <% else %>
       <div class="center">
-        <p>Remigeo is a way to leave yourself personal messages and reminders based on location.</p>
+        <p>RemiGeo is a way to leave yourself personal messages and reminders based on location.</p>
         <%= link_to "Sign Up", signup_path, class: "button big-button" %>
       </div><!--end .center -->
   <% end %>
