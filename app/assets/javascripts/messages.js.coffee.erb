@@ -122,6 +122,9 @@ $(document).ready ->
         marker = new google.maps.Marker({
           position: venueLocation
           map: homeMap
+          panControl: true
+          zoomControl: true
+          scaleControl: true
         })
 
         lat = parseFloat(venue.location.latitude)
