@@ -23,6 +23,7 @@ end
 
 gem "heroku", "~> 2.35.0"
 
+gem 'turbolinks'
 
 group :production do
   gem 'pg'
