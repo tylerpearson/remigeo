@@ -9,6 +9,8 @@
 
   </div>
 
+  <%= @result.city %>, <%= result.state %>
+
   <% @locations.each do |location| %>
   <div class="bubble-note">
     <%= link_to :controller => "messages", :action => "show", :id => location.messages[0].id do %>
