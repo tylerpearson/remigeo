@@ -20,7 +20,7 @@ end
 
 # production
 group :production do
-  gem 'pg'
+  gem "pg", "~> 0.14.1"
   gem 'thin'
 end
 

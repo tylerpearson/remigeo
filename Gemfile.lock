@@ -142,7 +142,7 @@ DEPENDENCIES
   jquery-rails
   json
   less-rails
-  pg
+  pg (~> 0.14.1)
   rails (= 3.2.11)
   sqlite3
   therubyracer

@@ -60,11 +60,25 @@ $(document).ready ->
         $('#search-locations-results').fadeIn()
         searchLocations(searchQuery,latitude,longitude)
 
-
-
   else
 
     alert "Please use a browser that supports geolocation"
+
+
+  $map = $("#map-canvas")
+
+  $map.gmap().bind "init", ->
+
+    $.getJSON "/messages.json", (data) ->
+      $.each data, (i, marker) ->
+        $map.gmap("addMarker",
+          position: new google.maps.LatLng(marker.latitude, marker.longitude)
+          bounds: true
+        ).click ->
+          $map.gmap "openInfoWindow",
+            content: marker.content
+          , this
+
 
 
 clearToggles = () ->

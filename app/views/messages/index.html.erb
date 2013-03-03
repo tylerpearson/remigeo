@@ -1,29 +1,39 @@
-<% provide(:title, "Messages") %>
+<% provide(:title, "Notes") %>
 
-<h1>Listing messages</h1>
+<h1>My Notes</h1>
 
-<table>
-  <tr>
-    <th>Content</th>
-    <th>User</th>
-    <th>Location</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="notes-map">
 
-<% @messages.each do |message| %>
-  <tr>
-    <td><%= message.content %></td>
-    <td><%= message.user_id %></td>
-    <td><%= message.location.title %></td>
-    <td><%= link_to 'Show', message %></td>
-    <td><%= link_to 'Edit', edit_message_path(message) %></td>
-    <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+  <div id="map-canvas"></div>
 
-<br />
+</div><!--end .notes-map -->
 
+<div class="notes-list">
+
+  <table>
+    <tr>
+      <th>Content</th>
+      <th>User</th>
+      <th>Location</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+  <% @messages.each do |message| %>
+    <tr>
+      <td><%= message.content %></td>
+      <td><%= message.user_id %></td>
+      <td><%= message.location.title %></td>
+      <td><%= link_to 'Show', message %></td>
+      <td><%= link_to 'Edit', edit_message_path(message) %></td>
+      <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </table>
+
+</div><!--end .notes-list -->
+
+<div class="page-links">
 <%= link_to 'New Message', new_message_path, class: "button" %>
+</div><!--end .page-links -->
