@@ -47,10 +47,9 @@ module MessageLocation
     # like if you have constraints or database-specific column types
     # config.active_record.schema_format = :sql
 
-    config.assets.initialize_on_precompile = false
 
     # include fonts
-    config.assets.paths << "#{Rails.root}/app/assets/fonts"
+    #config.assets.paths << "#{Rails.root}/app/assets/fonts"
 
     # Enforce whitelist mode for mass assignment.
     # This will create an empty whitelist of attributes available for mass-assignment for all models
