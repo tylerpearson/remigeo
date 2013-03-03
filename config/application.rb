@@ -49,6 +49,9 @@ module MessageLocation
 
     config.assets.initialize_on_precompile = false
 
+    # include fonts
+    config.assets.paths << "#{Rails.root}/app/assets/fonts"
+
     # Enforce whitelist mode for mass assignment.
     # This will create an empty whitelist of attributes available for mass-assignment for all models
     # in your app. As such, your models will need to explicitly whitelist or blacklist accessible
