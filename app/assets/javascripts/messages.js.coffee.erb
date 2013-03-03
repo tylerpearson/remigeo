@@ -61,6 +61,7 @@ $(document).ready ->
         searchLocations(searchQuery,latitude,longitude)
 
 
+
   else
 
     alert "Please use a browser that supports geolocation"
@@ -84,7 +85,7 @@ searchLocations = (name,lat,long) ->
     locations = []
 
     $.each data['response']['minivenues'], (key, val) ->
-      locations.push "<option value=\"#{val.id}\">#{val.name}</option>"
+      locations.push "<option value=\"#{val.id}\">#{val.name} (#{val.location.address}, #{val.location.city})</option>"
 
     $locations = $("#search-locations-results")
     $locations.html('')

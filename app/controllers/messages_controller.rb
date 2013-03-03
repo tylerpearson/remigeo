@@ -44,6 +44,10 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(params[:message])
+
+    location = Location.find_or_create_by_foursquare_location_id(params[:foursquare_location_id])
+    @message.location_id = location.id
+
     @message.user_id = current_user.id
 
     respond_to do |format|

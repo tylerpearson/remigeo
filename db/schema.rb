@@ -11,14 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130303034823) do
+ActiveRecord::Schema.define(:version => 20130303071440) do
 
   create_table "locations", :force => true do |t|
     t.float    "latitude"
     t.float    "longitude"
     t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+    t.string   "foursquare_location_id"
   end
 
   create_table "messages", :force => true do |t|

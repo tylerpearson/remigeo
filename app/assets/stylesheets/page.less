@@ -26,6 +26,16 @@
   }
 
 
+  ul, ol {
+    margin-left: 30px;
+  }
+  ol li {
+    list-style: decimal outside;
+  }
+  ul li {
+      list-style: disc outside;
+  }
+
 }
 
 
@@ -36,6 +46,9 @@ form {
   }
   div {
     margin-bottom: 15px;
+  }
+  select {
+    max-width: 100%;
   }
   input[type="text"], input[type="email"], input[type="password"], textarea {
     border-radius: 3px;
@@ -64,5 +77,11 @@ form {
     .button.big-button;
     border: none;
     cursor: pointer;
+    width: 100%;
   }
+}
+
+
+.page-links {
+  margin-top: 20px;
 }

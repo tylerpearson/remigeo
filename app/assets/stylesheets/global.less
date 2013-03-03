@@ -35,6 +35,10 @@ p {
   display: inline-block;
   background-color: @green;
   font-family: @proxima;
+  .box;
+  i {
+    margin-right: 3px;
+  }
   &:hover {
     background-color: lighten(@green,20%);
   }
@@ -50,8 +54,10 @@ p {
     }
   }
   &.middle-button {
-    font-size: 16px;
-    padding: 8px 16px;
+    font-size: 14px;
+    padding: 10px 20px;
+    width: 45%;
+    vertical-align: middle;
     &.toggled {
       background-color: darken(@blue,10%);
     }
@@ -61,4 +67,13 @@ p {
 a {
   font-weight: bold;
   color: @blue;
+}
+
+#error_explanation {
+  color: red;
+  p {
+    font-weight: bold;
+    color: red;
+    margin-bottom: 3px;
+  }
 }

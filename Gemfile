@@ -10,6 +10,7 @@ gem 'json'
 
 # authentication
 gem 'devise'
+gem "cancan"
 
 #development
 group :development do

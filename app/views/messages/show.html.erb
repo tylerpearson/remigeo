@@ -19,9 +19,13 @@
 
 <p>
   <b>Location:</b>
-  <%= @message.location_id %>
+  <%= @message.location.title %> (<%= @message.location.latitude %>, <%= @message.location.longitude %>)<br>
+
+  <img src="http://maps.googleapis.com/maps/api/staticmap?zoom=14&size=700x300&markers=color:blue%7C<%= @message.location.latitude %>,<%= @message.location.longitude %>&sensor=false" />
+
 </p>
 
-
-<%= link_to 'Edit', edit_message_path(@message) %> |
-<%= link_to 'Back', messages_path %>
+<div class="page-links">
+<%= link_to 'Edit', edit_message_path(@message), class: "button" %>
+<%= link_to 'Back', messages_path, class: "subtle-button button" %>
+</div><!--end .page-links -->

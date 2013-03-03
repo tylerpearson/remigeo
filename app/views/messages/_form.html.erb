@@ -1,7 +1,7 @@
 <%= form_for(@message) do |f| %>
   <% if @message.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
+      <p><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</p>
 
       <ul>
       <% @message.errors.full_messages.each do |msg| %>
@@ -18,19 +18,23 @@
 
   <div class="locations-options">
 
-    <h3>Tag the Location</h3>
+    <h3><i class="icon-screenshot"></i> What location for this message?</h3>
 
-    <a href="#" class="get-nearby middle-button button">Nearby Locations</a>
+    <div class="location-search-buttons">
 
-    <a href="#" class="search-locations middle-button button">Search locations</a>
+      <a href="#" class="get-nearby middle-button button"><i class="icon-map-marker"></i> Nearby Locations</a>
+
+      <a href="#" class="search-locations middle-button button"><i class="icon-globe"></i> Search locations</a>
+
+    </div><!-- end .location-search-buttons -->
 
     <div class="nearby-locations-container" style="display: none;">
-      <select id="nearby-locations" name="message[location_id]"></select>
+      <select id="nearby-locations" name="foursquare_location_id"></select>
     </div><!-- end .nearby-locations-container -->
 
     <div class="search-locations-container" style="display: none;">
       <input type="text" placeholder="Location name" id="location-search">
-      <select style="display:none;" id="search-locations-results" name="message[location_id]"></select>
+      <select style="display:none;" id="search-locations-results" name="foursquare_location_id"></select>
     </div>
 
   </div><!--end .locations-options-->
