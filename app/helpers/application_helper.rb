@@ -9,4 +9,10 @@ module ApplicationHelper
     end
   end
 
+  def body_class(b_class)
+    unless b_class.empty?
+      "#{b_class}"
+    end
+  end
+
 end
