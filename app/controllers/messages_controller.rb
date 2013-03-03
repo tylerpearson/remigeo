@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @messages }
+      format.json { render json: @messages.to_json(:include => [:location]) }
     end
   end
 

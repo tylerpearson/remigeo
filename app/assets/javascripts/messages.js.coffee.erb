@@ -70,13 +70,17 @@ $(document).ready ->
   $map.gmap().bind "init", ->
 
     $.getJSON "/messages.json", (data) ->
-      $.each data, (i, marker) ->
+      console.log(data)
+      console.log(data.length)
+
+      for message in data
+        console.log message.content
         $map.gmap("addMarker",
-          position: new google.maps.LatLng(marker.latitude, marker.longitude)
+          position: new google.maps.LatLng(message.location.latitude, message.location.longitude)
           bounds: true
         ).click ->
           $map.gmap "openInfoWindow",
-            content: marker.content
+            content: message.content
           , this
 
 
