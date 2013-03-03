@@ -8,7 +8,7 @@ class StaticPagesController < ApplicationController
 
   def home
     unless current_user.nil?
-      @messages = current_user.messages.limit(5)
+      @messages = current_user.messages.limit(3)
     end
     respond_to do |format|
       format.html # home.html.erb

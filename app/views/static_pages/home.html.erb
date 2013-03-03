@@ -1,6 +1,8 @@
 <div class="home-content">
   <% if user_signed_in? %>
 
+  <div id="home-map" style="width:100%; height: 400px"></div>
+
 
   <% @messages.each do |message| %>
   <div class="bubble-note">

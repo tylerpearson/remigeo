@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
     else
       respond_to do |format|
         format.html # show.html.erb
-        format.json { render json: @message }
+        format.json { render json: @message.to_json(:include => :location) }
       end
 
     end
@@ -101,14 +101,13 @@ class MessagesController < ApplicationController
     end
   end
 
-
+  # GET nearby.json
   def nearby
-    if params[:search].present?
-      @locations = Message.locations.near(params[:search], 1, :order => :distance)
-    end
+    #@locations = Message.locations.near(params[:search], 1, :order => :distance)
+    @messages = current_user.messages
 
     respond_to do |format|
-      format.json { render json: @location.errors, status: :unprocessable_entity }
+      format.json { render json: @messages.to_json(:include => :location) }
       format.html
     end
 

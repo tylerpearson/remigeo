@@ -72,6 +72,64 @@ $(document).ready ->
             , this
 
 
+  # for the show view
+  $individmap = $("#individual-map")
+
+  if $individmap.length
+
+      $.getJSON "#{document.URL}.json", (message) ->
+
+          venueLocation = new google.maps.LatLng(message.location.latitude,message.location.longitude)
+          mapOptions = {
+            zoom: 16
+            center: venueLocation
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          }
+          map = new google.maps.Map(document.getElementById("individual-map"), mapOptions)
+
+          marker = new google.maps.Marker({
+              position: venueLocation
+              map: map
+          })
+
+
+  # for the home page!
+  $homeMap = $("#home-map")
+
+  if $homeMap.length
+
+    $.getJSON "nearby.json", (messages) ->
+
+      mapOptions =
+        zoom: 14
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+
+      homeMap = new google.maps.Map(document.getElementById("home-map"), mapOptions)
+
+      # Try HTML5 geolocation
+      if navigator.geolocation
+        navigator.geolocation.getCurrentPosition ((position) ->
+          pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
+          homeMap.setCenter pos
+        )
+
+      fullBounds = new google.maps.LatLngBounds()
+
+      for venue in messages
+
+        venueLocation = new google.maps.LatLng(venue.location.latitude, venue.location.longitude)
+
+        marker = new google.maps.Marker({
+          position: venueLocation
+          map: homeMap
+        })
+
+        lat = parseFloat(venue.location.latitude)
+        long = parseFloat(venue.location.longitude)
+        point = new google.maps.LatLng(lat, long)
+        fullBounds.extend point
+
+      homeMap.fitBounds(fullBounds);
 
 clearToggles = () ->
 
