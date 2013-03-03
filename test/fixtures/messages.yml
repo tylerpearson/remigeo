@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  content: MyText
+  visible: false
+  user_id: 1
+  location_id: 1
+
+two:
+  content: MyText
+  visible: false
+  user_id: 1
+  location_id: 1

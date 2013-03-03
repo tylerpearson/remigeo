@@ -1,5 +1,8 @@
 MessageLocation::Application.routes.draw do
 
+  resources :messages
+
+
   devise_for :users
 
   devise_scope :user do
