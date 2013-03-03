@@ -1,6 +1,6 @@
 body {
   background: #fff;
-  font-family: "proxima-nova", "Proxima Nova", "helvetica neue", helvetica, sans-serif;
+  font-family: @proxima;
   font-size: 14px;
 }
 
@@ -11,7 +11,7 @@ p {
 .container {
   max-width: 700px;
   margin: 0 auto;
-  width: 100%;
+  width: 99%;
 }
 
 .left {
@@ -31,5 +31,24 @@ p {
   text-decoration: none;
   padding: 5px 10px;
   display: inline-block;
-  background: @blue;
+  background-color: @green;
+  &:hover {
+    background-color: lighten(@green,20%);
+  }
+  &.big-button {
+    padding: 10px 20px;
+    font-size: 22px;
+  }
+  &.subtle-button {
+    background: #ccc;
+    font-size: 14px;
+    &:hover {
+      background: darken(#ccc,10%);
+    }
+  }
+}
+
+a {
+  font-weight: bold;
+  color: @blue;
 }

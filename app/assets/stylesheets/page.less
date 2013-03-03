@@ -1,4 +1,47 @@
 #main {
   .fade-in(.25s);
-  padding: 25px 0;
+  padding: 30px 0;
+  h2:first-child {
+    font-size: 26px;
+    margin-bottom: 25px;
+  }
+}
+
+
+form {
+  width: 96%;
+  margin: 0 auto;
+  max-width: 500px;
+  margin-bottom: 30px;
+  input {
+    font-family: @proxima;
+  }
+  div {
+    margin-bottom: 15px;
+  }
+  input[type="text"], input[type="email"], input[type="password"] {
+    border-radius: 3px;
+    padding: 10px;
+    font-size: 18px;
+    box-shadow: none;
+    outline: none;
+    border: solid 1px #ccc;
+    margin-top: 2px;
+    width: 100%;
+    .box;
+    &:focus {
+      border: solid 1px @green;
+    }
+  }
+  label {
+    font-weight: bold;
+    padding-bottom: 3px;
+    display: inline-block;
+  }
+  input[type="submit"] {
+    .button;
+    .button.big-button;
+    border: none;
+    cursor: pointer;
+  }
 }
