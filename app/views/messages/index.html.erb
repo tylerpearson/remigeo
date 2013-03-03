@@ -13,7 +13,6 @@
   <table>
     <tr>
       <th>Content</th>
-      <th>User</th>
       <th>Location</th>
       <th></th>
       <th></th>
@@ -22,10 +21,8 @@
 
   <% @messages.each do |message| %>
     <tr>
-      <td><%= message.content %></td>
-      <td><%= message.user_id %></td>
+      <td><%= link_to message.content, message %></td>
       <td><%= message.location.title %></td>
-      <td><%= link_to 'Show', message %></td>
       <td><%= link_to 'Edit', edit_message_path(message) %></td>
       <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>

@@ -25,7 +25,7 @@
 @-webkit-keyframes fade-in {
     0% { opacity: 0; }
     80% { opacity: 0; }
-  100% { opacity: 1; }
+    100% { opacity: 1; }
 }
 
 .fade-in(@time: 1s) {
@@ -37,16 +37,16 @@
 }
 
 .transition(@property: all, @speed: .25s) {
-    -webkit-transition: @property @speed;
-    -moz-transition:  @property @speed;
-    -o-transition:  @property @speed;
-    -ms-transition:  @property @speed;
-    transition:  @property @speed;
+  -webkit-transition: @property @speed;
+  -moz-transition:  @property @speed;
+  -o-transition:  @property @speed;
+  -ms-transition:  @property @speed;
+  transition:  @property @speed;
 }
 
 .cover {
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }

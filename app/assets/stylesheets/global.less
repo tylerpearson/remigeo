@@ -4,6 +4,7 @@ body {
   font-size: 14px;
   width: 100%;
   overflow-x: hidden;
+  .smooth;
 }
 
 p {
@@ -40,27 +41,32 @@ i, em {
   text-transform: uppercase;
   font-weight: bold;
   text-decoration: none;
-  padding: 5px 10px;
+  padding: 7px 12px;
   display: inline-block;
   background-color: @green;
   font-family: @proxima;
   -webkit-appearance: none;
+  font-size: 14px;
+  box-shadow: 0 1px 0 darken(@green,7%);
   .box;
   i {
     margin-right: 3px;
   }
   &:hover {
     background-color: lighten(@green,20%);
+    box-shadow: 0 1px 0 lighten(@green,3%)
   }
   &.big-button {
-    padding: 10px 20px;
-    font-size: 20px;
+    padding: 15px 30px;
+    font-size: 14px;
   }
   &.subtle-button {
     background: #ccc;
     font-size: 14px;
+    box-shadow: 0 1px 0 darken(#ccc,5%);
     &:hover {
       background: darken(#ccc,10%);
+      box-shadow: 0 1px 0 darken(#ccc,13%);
     }
   }
   &.middle-button {
