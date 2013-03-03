@@ -7,10 +7,10 @@ clientSecret = "QJJOUTWQ2RBIMQJ3ED3RWZBIDGG4ZLEXK3LJQSM3LGU4KOON"
 
 $(document).ready ->
 
-  if navigator.geolocation
+  latitude = 0
+  longitude = 0
 
-    latitude = 0
-    longitude = 0
+  if navigator.geolocation
 
     startPos = undefined
     navigator.geolocation.getCurrentPosition ((position) ->
@@ -23,12 +23,6 @@ $(document).ready ->
         alert "You need to share your location!"
       else
         alert "Hmm, something went wrong, please try again."
-
-      # error.code can be:
-      #   0: unknown error
-      #   1: permission denied
-      #   2: position unavailable
-      #   3: timed out
 
     $('.get-nearby').on 'click', (e) ->
 
@@ -94,48 +88,27 @@ $(document).ready ->
 
 
   # for the home page!
-  $homeMap = $("#home-map")
 
-  if $homeMap.length
+  showPosition = (position) ->
 
-    $.getJSON "nearby.json", (messages) ->
+    $homeMap = $("#home-map")
 
-      mapOptions =
-        zoom: 14
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-        panControl: true
-        zoomControl: true
-        scaleControl: true
+    $homeMap.gmap().bind "init", ->
 
-      homeMap = new google.maps.Map(document.getElementById("home-map"), mapOptions)
+      $.getJSON "/nearby.json?latitude=#{position.coords.latitude}&longitude=#{position.coords.longitude}", (data) ->
 
-      # Try HTML5 geolocation
-      if navigator.geolocation
-        navigator.geolocation.getCurrentPosition ((position) ->
-          pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
-          homeMap.setCenter pos
-        )
+        if data.length
+          for message in data
+            $homeMap.gmap("addMarker",
+              position: new google.maps.LatLng(message.latitude, message.longitude)
+              bounds: true
+            ).click ->
+              $homeMap.gmap "openInfoWindow",
+                content: "<b>#{message.title}</b><br> #{message.messages[0].content}"
+                , this
 
-      fullBounds = new google.maps.LatLngBounds()
+  navigator.geolocation.getCurrentPosition(showPosition)
 
-      for message in messages
-
-        messageLocation = new google.maps.LatLng(message.latitude, message.longitude)
-
-        marker = new google.maps.Marker({
-          position: messageLocation
-          map: homeMap
-        })
-
-        google.maps.event.addListener marker, "click", ->
-          window.location = "messages/#{message.messages[0].id}"
-
-        lat = parseFloat(message.latitude)
-        long = parseFloat(message.longitude)
-        point = new google.maps.LatLng(lat, long)
-        fullBounds.extend point
-
-      #homeMap.fitBounds(fullBounds);
 
 clearToggles = () ->
 

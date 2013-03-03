@@ -2,8 +2,8 @@
   <div class="container">
     <div class="footer-links">
       <% if user_signed_in? %>
-        <%= link_to "Log out", signout_path, class: "button subtle-button" %>
-        <%= link_to "Edit profile", edit_user_registration_path(current_user), class: "button subtle-button" %>
+        <%= link_to "Log out", signout_path %>
+        <%= link_to "Edit profile", edit_user_registration_path(current_user) %>
       <% end %>
     </div>
     <div class="contact-links">
