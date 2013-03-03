@@ -34,18 +34,26 @@ p {
   padding: 5px 10px;
   display: inline-block;
   background-color: @green;
+  font-family: @proxima;
   &:hover {
     background-color: lighten(@green,20%);
   }
   &.big-button {
     padding: 10px 20px;
-    font-size: 22px;
+    font-size: 20px;
   }
   &.subtle-button {
     background: #ccc;
     font-size: 14px;
     &:hover {
       background: darken(#ccc,10%);
+    }
+  }
+  &.middle-button {
+    font-size: 16px;
+    padding: 8px 16px;
+    &.toggled {
+      background-color: darken(@blue,10%);
     }
   }
 }

@@ -1,0 +1,128 @@
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+
+clientId = "<%= ENV['FOURSQUARE_ID'] %>"
+clientSecret = "<%= ENV['FOURSQUARE_SECRET'] %>"
+
+
+$(document).ready ->
+
+  if navigator.geolocation
+
+    latitude = 0
+    longitude = 0
+
+    startPos = undefined
+    navigator.geolocation.getCurrentPosition ((position) ->
+      startPos = position
+      latitude = startPos.coords.latitude
+      longitude = startPos.coords.longitude
+
+    ), (error) ->
+      if error.code is 1
+        alert "You need to share your location!"
+      else
+        alert "Hmm, something went wrong, please try again."
+
+      # error.code can be:
+      #   0: unknown error
+      #   1: permission denied
+      #   2: position unavailable
+      #   3: timed out
+
+    $('.get-nearby').on 'click', (e) ->
+
+      e.preventDefault()
+      getNearbyLocations(latitude,longitude)
+
+      $('.results-container').fadeIn(250)
+      $('.search-locations-container').hide()
+      $('.nearby-locations-container').fadeIn()
+      clearToggles()
+      $(@).toggleClass('toggled')
+
+    $('.search-locations').on 'click', (e) ->
+
+      e.preventDefault()
+
+      $('.results-container').fadeIn(250)
+      clearToggles()
+      $(@).toggleClass('toggled')
+      $('.nearby-locations-container').hide()
+      $('.search-locations-container').fadeIn()
+
+    $('#location-search').on 'keyup', (e) ->
+
+      searchQuery = $('#location-search').val()
+
+      if searchQuery.length > 2
+        $('#search-locations-results').fadeIn()
+        searchLocations(searchQuery,latitude,longitude)
+
+
+  else
+
+    alert "Please use a browser that supports geolocation"
+
+
+clearToggles = () ->
+
+    $('.toggled').removeClass('toggled')
+
+
+# search locations
+searchLocations = (name,lat,long) ->
+
+  d = new Date()
+  currentDate = d.yyyymmdd()
+
+  searchQuery = "https://api.foursquare.com/v2/venues/suggestcompletion?ll=#{lat},#{long}&query=#{name}&client_id=#{clientId}&client_secret=#{clientSecret}&v=#{currentDate}&limit=50"
+
+  $.getJSON searchQuery, (data) ->
+
+    locations = []
+
+    $.each data['response']['minivenues'], (key, val) ->
+      locations.push "<option value=\"#{val.id}\">#{val.name}</option>"
+
+    $locations = $("#search-locations-results")
+    $locations.html('')
+
+    success:
+
+      $(locations.join("")).appendTo($locations)
+
+
+
+# get nearby locations
+getNearbyLocations = (lat,long) ->
+
+  d = new Date()
+  currentDate = d.yyyymmdd()
+
+  searchQuery = "https://api.foursquare.com/v2/venues/search?ll=#{lat},#{long}&client_id=#{clientId}&client_secret=#{clientSecret}&v=#{currentDate}&limit=50"
+
+  $.getJSON searchQuery, (data) ->
+
+    locations = []
+
+    $.each data['response']['venues'], (key, val) ->
+      locations.push "<option value=\"#{val.id}\">#{val.name} (#{metersToFeet(val.location.distance)}ft)</option>"
+
+    $locations = $("#nearby-locations")
+
+    success:
+
+      $(locations.join("")).appendTo($locations)
+
+# meters to feet
+metersToFeet = (meters) ->
+  Math.round(parseFloat(meters * 3.28084))
+
+# the date
+Date::yyyymmdd = ->
+  yyyy = @getFullYear().toString()
+  mm = (@getMonth() + 1).toString()
+  dd = @getDate().toString()
+  yyyy + ((if mm[1] then mm else "0" + mm[0])) + ((if dd[1] then dd else "0" + dd[0]))

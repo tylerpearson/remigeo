@@ -12,13 +12,28 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :content %><br />
+    <label>What do you want to add?</label><br />
     <%= f.text_area :content %>
   </div>
-  <div class="field">
-    <%= f.label :location_id %><br />
-    <%= f.number_field :location_id %>
-  </div>
+
+  <div class="locations-options">
+
+    <h3>Tag the Location</h3>
+
+    <a href="#" class="get-nearby middle-button button">Nearby Locations</a>
+
+    <a href="#" class="search-locations middle-button button">Search locations</a>
+
+    <div class="nearby-locations-container" style="display: none;">
+      <select id="nearby-locations" name="message[location_id]"></select>
+    </div><!-- end .nearby-locations-container -->
+
+    <div class="search-locations-container" style="display: none;">
+      <input type="text" placeholder="Location name" id="location-search">
+      <select style="display:none;" id="search-locations-results" name="message[location_id]"></select>
+    </div>
+
+  </div><!--end .locations-options-->
   <div class="actions">
     <%= f.submit %>
   </div>
