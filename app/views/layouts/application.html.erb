@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MessageLocation</title>
+  <title>Remigeo</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+  <%= render 'layouts/header' %>
+  <%= render 'layouts/flash' %>
+
+  <div class="container">
+    <section id="main">
+      <%= yield %>
+    </section><!-- end #main -->
+  </div><!--end .container -->
+
+  <%= render 'layouts/footer' %>
 
 </body>
 </html>
