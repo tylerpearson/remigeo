@@ -41,16 +41,6 @@ $(document).ready ->
       clearToggles()
       $(@).toggleClass('toggled')
 
-    $('.search-locations').on 'click', (e) ->
-
-      e.preventDefault()
-
-      $('.results-container').fadeIn(250)
-      clearToggles()
-      $(@).toggleClass('toggled')
-      $('.nearby-locations-container').hide()
-      $('.search-locations-container').fadeIn()
-
     $('#location-search').on 'keyup', (e) ->
 
       searchQuery = $('#location-search').val()
@@ -129,7 +119,7 @@ getNearbyLocations = (lat,long) ->
 
     $locations = $("#nearby-locations")
 
-    success:
+    success: () ->
 
       $(locations.join("")).appendTo($locations)
 
