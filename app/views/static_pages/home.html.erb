@@ -9,20 +9,26 @@
 
   </div><!--end .map-wrap -->
 
-  <% @locations.each do |location| %>
-  <div class="bubble-note">
-    <%= link_to :controller => "messages", :action => "show", :id => location.messages[0].id do %>
-      <div class="note-box">
-        <div class="note-box-content">
-          <p><%= location.messages[0].content %></p>
+  <div class="recent-notes">
+
+  <h2 class="page-title">Recently Added Notes</h2>
+
+  <% @messages.each do |message| %>
+    <div class="bubble-note">
+
+        <div class="note-box">
+          <div class="note-box-content">
+            <p><%= message.content %></p>
+          </div>
+        </div><!-- end .note-box -->
+        <div class="note-meta">
+          <p>Left <span><%= time_ago_in_words(message.created_at) %> ago</span> for <span class="location-title"><%= message.location.title %></span></p>
         </div>
-      </div><!-- end .note-box -->
-      <div class="note-meta">
-        <p>Left <span><%= time_ago_in_words(location.messages[0].created_at) %> ago</span> for <span class="location-title"><%= location.title %></span></p>
-      </div>
-    <% end %>
-  </div><!--end .bubble-note -->
-   <% end %>
+
+    </div><!--end .bubble-note -->
+  <% end %>
+
+  </div><!--end .recent-notes ->
 
     <div class="page-links center">
       <a class="button big-button" href="/messages/new"><i class="icon-map-marker"></i> Add a new note</a>
