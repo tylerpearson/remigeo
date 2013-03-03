@@ -1,15 +1,21 @@
 <div class="home-content">
   <% if user_signed_in? %>
-    <p>Recently created</p>
-    <ul>
-    <% @messages.each do |message| %>
-      <li>
-        <%= message.content %></td>
-        <%= message.location.title %>
-        <%= link_to 'Show', message %>
-      </tr>
-    <% end %>
-    </ul>
+
+
+  <% @messages.each do |message| %>
+  <div class="bubble-note">
+    <div class="note-box">
+      <div class="note-box-content">
+        <p><%= message.content %></p>
+      </div>
+    </div><!-- end .note-box -->
+    <div class="note-meta">
+      <p>Left <span><%= time_ago_in_words(message.created_at) %> ago</span> for <span class="location-title"><%= message.location.title %></span></p>
+    </div>
+  </div><!--end .bubble-note -->
+   <% end %>
+
+
 
     <div class="page-links">
       <%= link_to "See All Messages", messages_path, class: "button" %>

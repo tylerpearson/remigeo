@@ -42,3 +42,56 @@
     text-transform: uppercase;
   }
 }
+
+.note-box {
+  position:relative;
+  padding:15px;
+  border: 3px solid @green;
+  color:#333;
+  background: #fff;
+  border-radius: 5px;
+}
+
+  .note-box:before {
+    content: "";
+    position: absolute;
+    bottom: -13px;
+    left: 40px;
+    border-width: 13px 13px 0;
+    border-style: solid;
+    border-color: @green transparent;
+    display: block;
+    width: 0;
+  }
+
+  .note-box:after {
+    content: "";
+    position: absolute;
+    bottom: -9px;
+    left: 40px;
+    border-width: 13px 13px 0;
+    border-style: solid;
+    border-color: white transparent;
+    display: block;
+    width: 0;
+  }
+
+  .note-box-content {
+    font-size: 18px;
+  }
+
+  .note-meta {
+    margin-left: 70px;
+    padding: 15px 0;
+    p {
+      font-size: 16px;
+      line-height: 1.2;
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .location-title {
+    color: @blue;
+  }

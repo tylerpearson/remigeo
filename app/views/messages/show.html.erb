@@ -1,27 +1,18 @@
 <% provide(:title, "Message") %>
 
-<p>
-  <b>Content:</b>
-  <%= @message.content %>
-</p>
+<h1>Note at <%= @message.location.title %></h1>
 
-<p>
-  <b>Visible:</b>
-  <%= @message.visible %>
-</p>
+<div class="note-box">
+  <div class="note-box-content">
+    <p><%= @message.content %></p>
+  </div>
+</div><!-- end .note-box -->
 
-<p>
-  <b>User:</b>
-  <%= @message.user_id %>
-</p>
-
-<p>
-  <b>Location:</b>
-  <%= @message.location.title %><br>
+<div class="note-meta">
+  <p>Left <span><%= time_ago_in_words(@message.created_at) %> ago</span> for <span><%= @message.location.title %></span></p>
+</div>
 
   <img src="http://maps.googleapis.com/maps/api/staticmap?zoom=14&size=700x300&markers=color:blue%7C<%= @message.location.latitude %>,<%= @message.location.longitude %>&sensor=false" />
-
-</p>
 
 <div class="page-links">
 <%= link_to 'Edit', edit_message_path(@message), class: "button" %>
