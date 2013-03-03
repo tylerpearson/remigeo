@@ -18,6 +18,7 @@ group :development do
   gem 'pg'
 end
 
+gem "heroku", "~> 2.35.0"
 
 group :development do
   gem 'sqlite3'
