@@ -4,7 +4,12 @@
         <h1 class="logo"><i class="icon-comments-alt"></i> <%= link_to 'Remigeo', root_path %></h1>
       </div><!--end .logo -->
       <div class="right header-bonus">
+        <% if user_signed_in? %>
         <a class="button header-button" href="#"><i class="icon-pencil"></i> New</a>
+        <% else %>
+        <a class="button header-button" href="/login"><i class="icon-signin"></i> Log In</a>
+        <a class="button header-button" href="/signup"><i class="icon-ok"></i> Sign Up</a>
+        <% end %>
       </div><!--end .header-bonus -->
     </div><!--end .container -->
   </header><!--end .header -->

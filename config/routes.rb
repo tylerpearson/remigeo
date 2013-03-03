@@ -1,7 +1,13 @@
 MessageLocation::Application.routes.draw do
+
   devise_for :users
 
-  root :to => "static_pages#index"
+  devise_scope :user do
+    get "login", :to => "devise/sessions#new"
+    get "signup", :to => "devise/registrations#new"
+  end
+
+  root :to => "static_pages#home"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
