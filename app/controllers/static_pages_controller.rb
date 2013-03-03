@@ -8,8 +8,7 @@ class StaticPagesController < ApplicationController
 
   def home
     unless current_user.nil?
-      @locations = current_user.locations.near("Durham", 1, :order => :distance).limit(20)
-      @result = request.location
+      @locations = current_user.locations.near(request.location, 1, :order => :distance).limit(20)
     end
     respond_to do |format|
       format.html # home.html.erb
