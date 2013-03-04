@@ -15,7 +15,7 @@
           <%= link_to( message ) do %>
             <div class="note-box">
               <div class="note-box-content">
-                <p><%= message.content %></p>
+                <p><%= h(message.content).gsub(/\n/, '<br/>') %></p>
               </div>
             </div><!-- end .note-box -->
             <div class="note-meta">
