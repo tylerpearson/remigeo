@@ -7,6 +7,9 @@ clientSecret = "QJJOUTWQ2RBIMQJ3ED3RWZBIDGG4ZLEXK3LJQSM3LGU4KOON"
 
 $(document).on 'ready page:load', ->
 
+  # auto grow the message content area, if needed
+  $('#message_content').css('overflow', 'hidden').autogrow()
+
   latitude  = 0
   longitude = 0
 

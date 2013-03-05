@@ -24,7 +24,7 @@
       <td><%= link_to message.content, message %></td>
       <td><%= message.location.title %></td>
       <td><%= link_to 'Edit', edit_message_path(message) %></td>
-      <td><%= link_to 'Remove', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Remove', message, method: :delete, data: { confirm: 'Are you sure you want to remove this note?' } %></td>
     </tr>
   <% end %>
   </table>
