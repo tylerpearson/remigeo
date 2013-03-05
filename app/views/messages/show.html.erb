@@ -4,7 +4,7 @@
 
 <div class="note-box">
   <div class="note-box-content">
-    <p><%= <%= h(@message.content).gsub(/\n/, '<br/>') %> %></p>
+    <%= h(@message.content).gsub(/\n/, '<br/>').html_safe %>
   </div>
 </div><!-- end .note-box -->
 
