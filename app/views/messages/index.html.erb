@@ -33,14 +33,14 @@
 
 </div><!--end .notes-list -->
 
+<div class="page-links">
+  <%= link_to 'New Message', new_message_path, class: "button" %>
+</div><!--end .page-links -->
+
 <% else %>
 
-  <div class="center">
-    <p>Looks like you don't have any notes net. Get started by <%= link_to "adding a new note", new_message_path %>.</p>
+  <div class="center bigger-text">
+    <p>Looks like you don't have any notes yet! Get started by <%= link_to "adding a new note", new_message_path %>.</p>
   </div><!--end .center -->
 
 <% end %>
-
-<div class="page-links">
-<%= link_to 'New Message', new_message_path, class: "button" %>
-</div><!--end .page-links -->
