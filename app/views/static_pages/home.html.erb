@@ -2,7 +2,7 @@
 
   <% if user_signed_in? %>
 
-    <% if @messages.respond_to? :length? %>
+    <% unless @messages.blank? %>
 
       <h2>Nearby Notes</h2>
 

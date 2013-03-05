@@ -1,6 +1,6 @@
 <% provide(:title, "Notes") %>
 
-<% if @messages.respond_to? :length? %>
+<% unless @messages.blank? %>
 
 <h1>My Notes</h1>
 
