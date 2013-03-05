@@ -2,11 +2,13 @@
 
   <% if user_signed_in? %>
 
-    <h2>Nearby Notes</h2>
+    <% if @messages.respond_to? :length? %>
 
-    <div class="map-wrap">
-      <div class="map" id="home-map" style="width:100%; height: 350px"></div>
-    </div><!--end .map-wrap -->
+      <h2>Nearby Notes</h2>
+
+      <div class="map-wrap">
+        <div class="map" id="home-map" style="width:100%; height: 350px"></div>
+      </div><!--end .map-wrap -->
 
     <div class="recent-notes">
       <h2 class="page-title">Recently Added Notes</h2>
@@ -30,6 +32,12 @@
       <a class="button big-button" href="/messages/new"><i class= "icon-map-marker"></i> Add a new note</a>
       <a class="button big-button" href="/messages"><i class="icon-globe"></i> See your notes</a>
     </div>
+
+    <% else %>
+      <div class="center">
+        <p>Hi, looks like you are new here! Get started by <%= link_to "adding a new note", new_message_path %>.</p>
+      </div><!--end .center -->
+    <% end %>
 
   <% else %>
 
