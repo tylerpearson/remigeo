@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130303071440) do
+ActiveRecord::Schema.define(:version => 20130306014324) do
 
   create_table "locations", :force => true do |t|
     t.float    "latitude"
@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(:version => 20130303071440) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
