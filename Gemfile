@@ -9,6 +9,7 @@ gem 'rails', '3.2.11'
 # authentication
 gem 'devise'
 gem "cancan"
+gem 'omniauth-foursquare'
 
 # geo
 gem 'geocoder'
