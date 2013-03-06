@@ -6,6 +6,9 @@
         <%= link_to "Edit profile", edit_user_registration_path(current_user) %>
       <% end %>
     </div>
+    <div class="foursquare-logo-container center">
+      <%= link_to image_tag("powered-by-foursquare.png", height: 20), "http://foursquare.com", class: "foursquare-logo" %>
+    </div>
     <div class="contact-links">
         <a href="mailto:ty.pearson@gmail.com">Comments, suggestions, etc.</a>
     </div><!--end .contact-links -->
