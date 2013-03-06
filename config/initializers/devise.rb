@@ -1,3 +1,5 @@
+ require "omniauth-foursquare"
+
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -213,6 +215,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
+  #OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
   config.omniauth :foursquare, ENV["FOURSQUARE_ID"], ENV["FOURSQUARE_SECRET"]
 
   # ==> Warden configuration
