@@ -29,8 +29,8 @@
     </div><!--end .recent-notes -->
 
     <div class="page-links center">
-      <a class="button big-button" href="/messages/new"><i class= "icon-map-marker"></i> Add a new note</a>
-      <a class="button big-button" href="/messages"><i class="icon-globe"></i> See your notes</a>
+      <%= link_to '<i class= "icon-map-marker"></i> Add a new note'.html_safe, new_message_path, class: "button big-button" %>
+      <%= link_to '<i class="icon-globe"></i> See your notes'.html_safe, messages_path, class: "button big-button" %>
     </div>
 
     <% else %>
