@@ -1,1 +1,3 @@
-work in progress for the American Underground hackathon
+Built during the first American Underground hackathon.
+
+Currently up at [remigeo.com](http://remigeo.com). More features coming soon.
