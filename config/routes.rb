@@ -1,5 +1,7 @@
 MessageLocation::Application.routes.draw do
 
+  get "foursquare/incoming"
+
   resources :messages
 
   get "/nearby", :to => "messages#nearby"
