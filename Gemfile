@@ -14,6 +14,9 @@ gem 'omniauth-foursquare'
 # geo
 gem 'geocoder'
 
+# foursquare
+gem ''
+
 # other
 gem "heroku", "~> 2.35.0"
 gem 'turbolinks'
@@ -21,12 +24,13 @@ gem 'figaro'
 gem 'json'
 gem 'less-rails'
 
-#development
+# development
 group :development do
   gem "better_errors"
   gem 'sqlite3'
 end
 
+# production
 group :production do
   gem 'pg'
 end
