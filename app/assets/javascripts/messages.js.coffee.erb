@@ -38,7 +38,7 @@ $(document).on 'ready page:load', ->
       clearToggles()
       $(@).toggleClass('toggled')
 
-    $('#location-search').on 'keyup', (e) ->
+    $('#location-search').on 'keyup change input blur paste focus', (e) ->
 
       searchQuery = $('#location-search').val()
 
