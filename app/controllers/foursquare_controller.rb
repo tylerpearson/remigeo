@@ -10,7 +10,12 @@ class FoursquareController < ApplicationController
     #user   = User.find_by_uid(checkin_hash["user"]["id"])
     #type   = checkin_hash["type"]
 
-    checkin = Checkin.create(user: checkin_hash["user"]["id"], action: checkin_hash["type"], checkin_id: checkin_hash["id"]) #unless checkin
+    checkin = Checkin.create(
+                      :user => checkin_hash["user"]["id"],
+                      :action => checkin_hash["type"],
+                      :checkin_id => checkin_hash["id"],
+                      :data => checkin_hash
+                    ) #unless checkin
 
     #if user
       #checkin = Checkin.find_by_checkin_id(checkin_hash["id"])
@@ -22,7 +27,5 @@ class FoursquareController < ApplicationController
     render :text => "success"
     #end
   end
-
-
 
 end
