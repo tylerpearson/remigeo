@@ -15,7 +15,7 @@ gem 'omniauth-foursquare'
 gem 'geocoder'
 
 # foursquare
-gem ''
+gem 'foursquare2'
 
 # other
 gem "heroku", "~> 2.35.0"
