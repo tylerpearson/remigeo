@@ -1,6 +1,6 @@
 MessageLocation::Application.routes.draw do
 
-  get "checkins/show"
+  match "checkin/:checkinid" => "checkins#show"
 
   match "foursquare/incoming" => 'foursquare#push'
 

@@ -1,6 +1,7 @@
 class FoursquareController < ApplicationController
 
   before_filter :protect_from_forgery, :except => [:push]
+  skip_before_filter :verify_authenticity_token, :only => [:push]
 
   def push
 
