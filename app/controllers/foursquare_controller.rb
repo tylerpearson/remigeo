@@ -27,7 +27,7 @@ class FoursquareController < ApplicationController
         #checkin.process_checkin
       #end
 
-      render :text => "success"
+      format.json { head :ok }
     end
   end
 
