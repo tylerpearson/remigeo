@@ -11,7 +11,8 @@ class FoursquareController < ApplicationController
                           :user => checkin_hash["user"]["id"],
                           :action => checkin_hash["type"],
                           :checkin_id => checkin_hash["id"],
-                          :data => checkin_hash
+                          :data => checkin_hash,
+                          :foursquare_location_id => checkin_hash["venue"]["id"]
                         )
 
     if checkin.save

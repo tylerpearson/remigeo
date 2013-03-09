@@ -1,7 +1,7 @@
 require 'securerandom'
 
 class Checkin < ActiveRecord::Base
-  attr_accessible :action, :data, :user, :checkin_id, :user_id
+  attr_accessible :action, :data, :user, :checkin_id, :user_id, :foursquare_location_id
 
   serialize :data, JSON
 

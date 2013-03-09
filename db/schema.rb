@@ -11,17 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130309191859) do
+ActiveRecord::Schema.define(:version => 20130309211936) do
 
   create_table "checkins", :force => true do |t|
     t.string   "user"
     t.string   "action"
     t.text     "data"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
     t.string   "checkin_id"
     t.string   "unique_checkin_slug"
     t.integer  "user_id"
+    t.string   "foursquare_location_id"
   end
 
   create_table "locations", :force => true do |t|

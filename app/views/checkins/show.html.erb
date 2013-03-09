@@ -1,1 +1,11 @@
 <p><%= @checkin.user %></p>
+
+<p><%= @user.email %></p>
+
+<p><%= @location.title %></p>
+
+<% @messages.each do |message| %>
+
+  <p><%= message.content %></p>
+
+<% end %>
