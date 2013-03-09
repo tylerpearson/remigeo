@@ -15,12 +15,9 @@ class FoursquareController < ApplicationController
                           :foursquare_location_id => checkin_hash["venue"]["id"]
                         )
 
-    if checkin.save
-      #checkin.reply
-    end
+    checkin.save
 
-    render :nothing => true, :status => 200, :content_type => 'text/html'
-
+    render :text => "success"
   end
 
 end
