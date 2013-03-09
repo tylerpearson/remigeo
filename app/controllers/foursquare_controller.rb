@@ -8,9 +8,6 @@ class FoursquareController < ApplicationController
 
     checkin_hash = ActiveSupport::JSON.decode(params[:checkin])
 
-    #user   = User.find_by_uid(checkin_hash["user"]["id"])
-    #type   = checkin_hash["type"]
-
     checkin = Checkin.new(
                           :user => checkin_hash["user"]["id"],
                           :action => checkin_hash["type"],
@@ -18,12 +15,9 @@ class FoursquareController < ApplicationController
                           :data => checkin_hash
                         )
 
-      #if user
-        #checkin = Checkin.find_by_checkin_id(checkin_hash["id"])
-        #checkin.set_checkin_data checkin_hash
-    checkin.save
-        #checkin.process_checkin
-      #end
+    if checkin.save
+      checkin.reply
+    end
 
     render :nothing => true, :status => 200, :content_type => 'text/html'
 

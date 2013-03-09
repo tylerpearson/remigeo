@@ -17,10 +17,10 @@ class User < ActiveRecord::Base
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
       user = User.create(email: auth.extra.raw_info.contact.email,
-                           provider: auth.provider,
-                           uid: auth.uid,
-                           password: Devise.friendly_token[0,20]
-                           )
+                          provider: auth.provider,
+                          uid: auth.uid,
+                          password: Devise.friendly_token[0,20]
+                        )
     end
     user
   end
