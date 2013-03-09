@@ -7,8 +7,6 @@
         <% if user_signed_in? %>
           <a class="button header-button" href="/messages/new"><i class="icon-pencil"></i> Add New</a>
         <% else %>
-          <%= link_to '<i class="icon-signin"></i> Log In'.html_safe, login_path, :class => "button header-button" %>
-          <%= link_to '<i class="icon-ok"></i> Sign Up'.html_safe, signup_path, :class => "button header-button" %>
           <%= link_to '<i class="icon-foursquare"></i>Sign in with Foursquare'.html_safe, user_omniauth_authorize_path(:foursquare), :class => "button header-button" %>
         <% end %>
       </div><!--end .header-bonus -->
