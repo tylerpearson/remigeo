@@ -7,4 +7,26 @@ class Checkin < ActiveRecord::Base
     self.data = data
   end
 
+  token = SecureRandom.urlsafe_base64
+
+  while Checkin.where(:token => token).any?
+    token = SecureRandom.urlsafe_base64
+  end
+
+  def create_reply(message)
+    reply_url = "https://api.foursquare.com/v2/checkins/#{checkin_id}/reply"
+    url = URI.parse(reply_url)
+    req = Net::HTTP::Post.new(url.path)
+    # token is a one time use secure random string
+    params = { :url => "http://www.remigeo.com/response/#{token}/",
+      :text => message,
+      :oauth_token => user.foursquare_access_token,
+      :v => "20120827" }
+    req.set_form_data(params)
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    response = http.request(req)
+    puts response
+  end
+
 end

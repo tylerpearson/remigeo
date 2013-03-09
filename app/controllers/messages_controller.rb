@@ -119,4 +119,12 @@ class MessagesController < ApplicationController
 
   end
 
+
+  # hide messages
+  def hide
+
+
+
+  end
+
 end
