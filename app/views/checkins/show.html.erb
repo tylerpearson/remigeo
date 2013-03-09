@@ -4,8 +4,16 @@
 
 <p><%= @location.title %></p>
 
-<% @messages.each do |message| %>
+<% unless @messages.blank? %>
 
-  <p><%= message.content %></p>
+  <% @messages.each do |message| %>
+
+    <p><%= message.content %></p>
+
+  <% end %>
+
+<% else %>
+
+  <p>No messages for this location. <%= link_to "Add a note here?", new_message_path %>
 
 <% end %>
