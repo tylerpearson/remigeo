@@ -1,8 +1,6 @@
 class FoursquareController < ApplicationController
 
-  before_filter :protect_from_forgery, :except => [:push]
-
-  #client = Foursquare2::Client.new(:client_id => ENV["FOURSQUARE_ID"], :client_secret => ENV["FOURSQUARE_SECRET"])
+  skip_before_filter :verify_authenticity_token, :only => [:push]
 
   def push
 
