@@ -27,7 +27,7 @@ class FoursquareController < ApplicationController
         #checkin.process_checkin
       #end
 
-      render :text => "ok", :layout => false
+      render :nothing, :status => 200
     end
   end
 
