@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :messages, :dependent => :destroy
   has_many :locations, :through => :messages
 
+  has_many :checkins
 
   def self.find_for_foursquare_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first

@@ -50,9 +50,7 @@
 
   <%= render 'layouts/footer' %>
 
-  <% if !Rails.env.production? %>
-    <%= session.inspect %>
-  <% end %>
+  <%= debug(session) if Rails.env.development? %>
 
 </body>
 </html>

@@ -1,6 +1,6 @@
 class FoursquareController < ApplicationController
 
-  skip_before_filter :verify_authenticity_token, :only => [:push]
+  before_filter :protect_from_forgery, :except => [:push]
 
   def push
 
@@ -14,7 +14,7 @@ class FoursquareController < ApplicationController
                         )
 
     if checkin.save
-      checkin.reply
+      #checkin.reply
     end
 
     render :nothing => true, :status => 200, :content_type => 'text/html'
