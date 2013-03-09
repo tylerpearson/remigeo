@@ -1,21 +1,28 @@
 MessageLocation::Application.routes.draw do
 
+  # checkins
   match "checkin/:checkinid" => "checkins#show"
 
+  # foursquare push api incomings
   match "foursquare/incoming" => 'foursquare#push'
 
+  # all the messages
   resources :messages
 
+  # from javascript asking for nearby messages
   get "/nearby", :to => "messages#nearby"
 
+  # the oauth stuff
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
+  # customize the oauth a bit more
   devise_scope :user do
     get "login",   :to => "devise/sessions#new"
     get "signout", :to => "devise/sessions#destroy"
     get "signup",  :to => "devise/registrations#new"
   end
 
+  # shoot to the static pages controller on root for now
   root :to => "static_pages#home"
 
   # The priority is based upon order of creation:
