@@ -1,3 +1,5 @@
+<h2>This is a response message page</h2>
+
 <p><%= @checkin.user %></p>
 
 <p><%= @user.email %></p>
@@ -7,13 +9,9 @@
 <% unless @messages.blank? %>
 
   <% @messages.each do |message| %>
-
     <p><%= message.content %></p>
-
   <% end %>
 
 <% else %>
-
   <p>No messages for this location. <%= link_to "Add a note here?", new_message_path %>
-
 <% end %>

@@ -4,6 +4,11 @@
         <h1 class="logo"><i class="icon-comments-alt"></i> <%= link_to 'Remigeo', root_path %></h1>
       </div><!--end .logo -->
       <div class="right header-bonus">
+        <div class="search">
+          <form>
+            <input type="search" placeholder="Search notes" results="5" autosave="remigeo_site_search">
+          </form>
+        </div><!--end .search -->
         <% if user_signed_in? %>
           <a class="button header-button" href="/messages/new"><i class="icon-pencil"></i> Add New</a>
         <% else %>
