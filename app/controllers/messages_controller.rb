@@ -5,6 +5,9 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
+
+    @searchterm = params[:search] if params[:search]
+
     if params[:search]
       @messages = current_user.messages.search(params[:search])
     else
