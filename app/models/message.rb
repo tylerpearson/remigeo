@@ -12,6 +12,11 @@ class Message < ActiveRecord::Base
 
   before_create :make_visible
 
+
+  def self.search(search)
+    where 'content LIKE ?', "%#{search}%"
+  end
+
   private
 
     def make_visible

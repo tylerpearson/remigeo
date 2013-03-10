@@ -5,7 +5,11 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = current_user.messages
+    if params[:search]
+      @messages = current_user.messages.search(params[:search])
+    else
+      @messages = current_user.messages
+    end
 
     respond_to do |format|
       format.html # index.html.erb
