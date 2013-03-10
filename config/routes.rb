@@ -1,6 +1,6 @@
 MessageLocation::Application.routes.draw do
 
-  get "location/show"
+  get "locations/show"
 
   # checkins
   match "checkin/:checkinid" => "checkins#show"
