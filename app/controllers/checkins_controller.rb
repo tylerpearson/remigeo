@@ -1,5 +1,7 @@
 class CheckinsController < ApplicationController
 
+  require 'open-uri'
+
   def show
 
     # alls the info, should probably be cleaned up at some point
