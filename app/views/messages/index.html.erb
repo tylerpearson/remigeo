@@ -8,13 +8,17 @@
 
 <h1>My Notes</h1>
 
+<% if @searchterm.blank? %>
+
 <div class="notes-map">
 
   <div style="width: 100%; height: 300px;" class="map" id="map-canvas"></div>
 
 </div><!--end .notes-map -->
 
-<% unless @searchterm.nil? %>
+<% end %>
+
+<% unless @searchterm.blank? %>
   <div class="search-results-header">
     <p><b>Showing results for <span>"<%= @searchterm %>"</span></b></p>
   </div>
