@@ -60,6 +60,10 @@
         background-image: url(./search-icon.png);
         background-repeat: no-repeat;
         background-position: 6px center;
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 5px rgba(255,255,255,0.5);
+        }
       }
       input[type="search"]::-webkit-search-decoration,
       input[type="search"]::-webkit-search-cancel-button,
