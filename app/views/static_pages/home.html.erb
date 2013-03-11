@@ -13,18 +13,7 @@
     <div class="recent-notes">
       <h2 class="page-title">Recently Added Notes</h2>
       <% @messages.each do |message| %>
-        <div class="bubble-note">
-          <%= link_to( message ) do %>
-            <div class="note-box">
-              <div class="note-box-content">
-                <%= h(message.content).gsub(/\n/, '<br/>').html_safe %>
-              </div>
-            </div><!-- end .note-box -->
-            <div class="note-meta">
-              <p>Left <span><%= time_ago_in_words(message.created_at) %> ago</span> for <span class="location-title"><%= message.location.title %></span></p>
-            </div>
-          <% end %>
-        </div><!--end .bubble-note -->
+        <%= render 'shared/message_blurb', :message => message %>
       <% end %>
     </div><!--end .recent-notes -->
 
