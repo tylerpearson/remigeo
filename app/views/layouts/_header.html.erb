@@ -9,11 +9,13 @@
             <%= search_field_tag :search, params[:search], :placeholder => "Search notes" %>
           <% end %>
         </div><!--end .search -->
+        <div class="header-buttons">
         <% if user_signed_in? %>
           <a class="button header-button" href="/messages/new"><i class="icon-pencil"></i> Add New</a>
         <% else %>
           <%= link_to '<i class="icon-foursquare"></i>Sign in with Foursquare'.html_safe, user_omniauth_authorize_path(:foursquare), :class => "button header-button" %>
         <% end %>
+        </div><!-- .header-buttons -->
       </div><!--end .header-bonus -->
     </div><!--end .container -->
   </header><!--end .header -->
