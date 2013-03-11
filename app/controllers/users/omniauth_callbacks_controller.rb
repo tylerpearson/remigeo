@@ -1,5 +1,7 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
+  skip_before_filter :verify_authenticity_token
+
   def passthru
     render :file => "#{Rails.root}/public/404.html", :status => 404, :layout => false
   end
