@@ -16,6 +16,8 @@
     <%= f.text_area :content %>
   </div>
 
+  <% if @location.blank? %>
+
   <div class="locations-options">
 
     <h3><i class="icon-screenshot"></i> What location?</h3>
@@ -34,11 +36,19 @@
     </div><!-- end .nearby-locations-container -->
 
     <div class="search-locations-container">
-      <input type="text" placeholder="Type the location" id="location-search">
+      <input type="text" placeholder="Type the location name" id="location-search">
       <select style="display:none;" id="search-locations-results" name="foursquare_location_id"></select>
     </div>
 
   </div><!--end .locations-options-->
+
+  <% else %>
+
+    <!-- the location the user checked in -->
+    <input type="hidden" value="<%= @location.foursquare_location_id %>" name="foursquare_location_id">
+
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

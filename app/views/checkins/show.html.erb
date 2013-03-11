@@ -12,6 +12,9 @@
     <p><%= message.content %></p>
   <% end %>
 
+  <%= render :partial => 'messages/form', :message => @message %>
+
 <% else %>
-  <p>No messages for this location. <%= link_to "Add a note here?", new_message_path %>
+  <p>No messages for this location. Do you want to add a note?</p>
+
 <% end %>
