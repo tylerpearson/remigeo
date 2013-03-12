@@ -190,6 +190,8 @@ DEPENDENCIES
   json
   less-rails
   less-rails-fontawesome
+  oauth2
+  omniauth
   omniauth-foursquare
   pg
   rails (= 3.2.11)

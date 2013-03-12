@@ -10,6 +10,8 @@ gem 'rails', '3.2.11'
 gem 'devise'
 gem "cancan"
 gem 'omniauth-foursquare'
+gem 'omniauth'
+gem 'oauth2'
 
 # geo
 gem 'geocoder'
