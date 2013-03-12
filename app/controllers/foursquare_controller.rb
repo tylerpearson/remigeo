@@ -6,9 +6,7 @@ class FoursquareController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:push]
 
   def push
-
     checkin_hash = ActiveSupport::JSON.decode(params[:checkin])
-
     checkin = Checkin.new(
                           :user => checkin_hash["user"]["id"],
                           :action => checkin_hash["type"],
