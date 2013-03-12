@@ -18,9 +18,7 @@ class FoursquareController < ApplicationController
                         )
 
     if checkin.save
-
       user = User.find(checkin.user_id)
-
       reply_url = "https://api.foursquare.com/v2/checkins/#{checkin.checkin_id}/reply"
       url = URI.parse(reply_url)
       req = Net::HTTP::Post.new(url.path)
