@@ -17,9 +17,9 @@ class Checkin < ActiveRecord::Base
   end
 
   def set_user_id
-    user = User.find_by_uid(self.user)
+    user = Authentication.find_by_uid(self.user)
     unless user.nil?
-      self.user_id = user.id
+      self.user_id = user.user_id
     end
   end
 
