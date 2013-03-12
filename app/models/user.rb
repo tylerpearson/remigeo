@@ -9,29 +9,18 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid
   # attr_accessible :title, :body
 
+  has_many :authentications, :dependent => :destroy
+
   has_many :messages, :dependent => :destroy
   has_many :locations, :through => :messages
 
   has_many :checkins
 
-  def self.find_for_foursquare_oauth(auth, signed_in_resource=nil)
-    user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    unless user
-      user = User.create(email: auth.extra.raw_info.contact.email,
-                          provider: auth.provider,
-                          uid: auth.uid,
-                          password: Devise.friendly_token[0,20]
-                        )
-    end
-    user
-  end
-
-  def self.new_with_session(params, session)
-    super.tap do |user|
-      if data = session["devise.foursquare_data"] && session["devise.foursquare_data"]["extra"]["raw_info"]
-        user.email = data["contact"]["email"] if user.email.blank?
-      end
-    end
+  def apply_omniauth(auth)
+    # In previous omniauth, 'user_info' was used in place of 'raw_info'
+    self.email = auth['extra']['raw_info']["contact"]["email"]
+    # Again, saving token is optional. If you haven't created the column in authentications table, this will fail
+    authentications.build(:provider => auth['provider'], :uid => auth['uid'], :token => auth['credentials']['token'])
   end
 
 
