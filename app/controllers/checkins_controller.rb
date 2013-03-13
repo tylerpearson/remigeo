@@ -4,6 +4,8 @@ class CheckinsController < ApplicationController
 
   def show
 
+    session[:return_to] = request.fullpath
+
     # alls the info, should probably be cleaned up at some point
     @checkin  = Checkin.find_by_unique_checkin_slug(params[:checkinid])
     @user     = User.find(@checkin.user_id)

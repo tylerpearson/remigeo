@@ -2,6 +2,9 @@
 
 <% provide(:title, "Checkin at #{@location.title}") %>
 
+
+<% if user_signed_in? %>
+
 <h2>Checkin at <%= @location.title %></h2>
 
 <% unless @messages.blank? %>
@@ -15,3 +18,15 @@
 <div class="checkin-form">
   <%= render :partial => 'messages/form', :message => @message %>
 </div>
+
+<% else %>
+
+  <div class="center">
+    <p class="bigger-text">Shoot! Looks like you need to login first to see this page.</p>
+  </div><!--end .center -->
+
+  <div class="center">
+    <%= link_to '<i class="icon-foursquare"></i>Sign in with Foursquare'.html_safe, user_omniauth_authorize_path(:foursquare), :class => "button big-button" %>
+  </div>
+
+<% end %>
