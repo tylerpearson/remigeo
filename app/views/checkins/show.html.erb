@@ -1,11 +1,13 @@
 <% provide(:body_class, "checkin-page") %>
 
+<% unless @location.nil? %>
 <% provide(:title, "Checkin at #{@location.title}") %>
+<% end %>
 
 
 <% if user_signed_in? %>
 
-<h2>Checkin at <%= @location.title %></h2>
+<h2>New Checkin <%= "at #{@location.title}" unless @location.nil? %></h2>
 
 <% unless @messages.blank? || !defined?(@messages) %>
   <% @messages.each do |message| %>
