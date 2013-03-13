@@ -4,11 +4,13 @@
         <h1 class="logo"><i class="icon-comments-alt"></i> <%= link_to 'Remigeo', root_path %></h1>
       </div><!--end .logo -->
       <div class="right header-bonus">
+        <% if user_signed_in? %>
         <div class="search">
           <%= form_tag messages_path, :method => 'get' do %>
             <%= search_field_tag :search, params[:search], :placeholder => "Search notes" %>
           <% end %>
         </div><!--end .search -->
+        <% end %>
         <div class="header-buttons">
         <% if user_signed_in? %>
           <a class="button header-button" href="/messages/new"><i class="icon-pencil"></i> Add New</a>
