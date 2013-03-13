@@ -7,7 +7,7 @@
 
 <h2>Checkin at <%= @location.title %></h2>
 
-<% unless @messages.blank? %>
+<% unless @messages.blank? || !defined?(@messages) %>
   <% @messages.each do |message| %>
       <%= render 'shared/message_blurb', :message => message %>
   <% end %>
