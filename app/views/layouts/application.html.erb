@@ -13,11 +13,13 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 
-  <% if Rails.env.production? %>
+  <% if !Rails.env.development? %>
     <!-- typekit for remigeo.com -->
     <script src="//use.typekit.net/gsg6lie.js"></script>
     <script>try{Typekit.load();}catch(e){}</script>
+  <% end %>
 
+  <% if Rails.env.production? %>
     <!-- analytics -->
     <script>
       var _gaq = _gaq || [];
