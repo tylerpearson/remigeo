@@ -7,6 +7,8 @@ class Checkin < ActiveRecord::Base
 
   before_create :set_unique_checkin_slug, :set_user_id
 
+  belongs_to :location, :class_name => 'Location', :foreign_key => 'foursquare_location_id'
+
   def set_checkin_data(data)
     self.data = data
   end
@@ -22,5 +24,14 @@ class Checkin < ActiveRecord::Base
       self.user_id = user.user_id
     end
   end
+
+  def push_respond?
+    true
+  end
+
+  def push_respond_message
+    # this will have the info
+  end
+
 
 end

@@ -15,13 +15,13 @@ class FoursquareController < ApplicationController
                           :foursquare_location_id => checkin_hash["venue"]["id"]
                         )
 
-    if checkin.save
+    if checkin.save && checkin.push_respond?
       user = User.find(checkin.user_id)
       reply_url = "https://api.foursquare.com/v2/checkins/#{checkin.checkin_id}/reply"
       url = URI.parse(reply_url)
       req = Net::HTTP::Post.new(url.path)
       params = { :url => "https://vast-sea-8529.herokuapp.com/checkin/#{checkin.unique_checkin_slug}/",
-        :text => "Thanks for checking in with RemiGeo!",
+        :text => "Nice checkin! Would you like to add a message?",
         :oauth_token => user.authentications.find_by_provider("foursquare").token,
         :v => "20130311" }
       req.set_form_data(params)
