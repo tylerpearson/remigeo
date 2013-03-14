@@ -13,7 +13,7 @@
         <% end %>
         <div class="header-buttons">
         <% if user_signed_in? %>
-          <a class="button header-button" href="/messages/new"><i class="icon-pencil"></i> Add New</a>
+          <a class="button header-button" href="/messages/new"><i class="icon-pencil"></i> <span class="hide-mobile">Add New</span></a>
         <% else %>
           <%= link_to '<i class="icon-foursquare"></i>Sign in with Foursquare'.html_safe, user_omniauth_authorize_path(:foursquare), :class => "button header-button" %>
         <% end %>
