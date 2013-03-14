@@ -1,5 +1,12 @@
-While you look like an amazing person, we've decided to withhold this from a public website for the time-being as we make it better.
+Work in progress. The current version is up on staging server -- if you have any interest playing around with it, feel free to message me.
 
-Check it out in a month or so and it will be quite a bit better.
+The inital part of this was built over 24 hours during the [American Underground Hackathon](http://www.auhackathon.com/) in Durham on March 3-4 (by just me!).
 
-But seriously, that's a great-looking shirt.
+To be added:
+- see notes by location
+- ability to hide messages
+- better looking/functioning website
+- switch away from Google Maps to Mapbox
+- customized response for Foursquare push messages
+- clean up sleep-dreprived crappy code
+- *Long term* iOS app with Rubymotion to eliminate dependency on Foursquare checkins for message notifications
