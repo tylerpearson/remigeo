@@ -26,10 +26,14 @@ gem 'figaro'
 gem 'json'
 gem 'less-rails'
 
+# server on dev and heroku
+gem 'thin'
+
 # development
 group :development do
   gem "better_errors"
   gem 'sqlite3'
+  gem 'quiet_assets'
 end
 
 # production
