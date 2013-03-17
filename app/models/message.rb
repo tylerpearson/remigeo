@@ -1,6 +1,8 @@
 class Message < ActiveRecord::Base
   attr_accessible :content, :location_id, :user_id
 
+  acts_as_paranoid
+
   default_scope order: 'created_at DESC'
 
   belongs_to :user

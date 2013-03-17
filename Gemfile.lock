@@ -121,6 +121,8 @@ GEM
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
     orm_adapter (0.4.0)
+    paranoia (1.2.0)
+      activerecord (>= 3.0.0)
     pg (0.12.2)
     polyglot (0.3.3)
     quiet_assets (1.0.2)
@@ -201,6 +203,7 @@ DEPENDENCIES
   oauth2
   omniauth
   omniauth-foursquare
+  paranoia
   pg
   quiet_assets
   rails (= 3.2.11)

@@ -29,6 +29,9 @@ gem 'less-rails'
 # server on dev and heroku
 gem 'thin'
 
+# hide records instead of destroying
+gem 'paranoia'
+
 # development
 group :development do
   gem "better_errors"
