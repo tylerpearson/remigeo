@@ -32,6 +32,9 @@ gem 'thin'
 # hide records instead of destroying
 gem 'paranoia'
 
+# admin
+gem 'activeadmin'
+
 # development
 group :development do
   gem "better_errors"
@@ -48,7 +51,9 @@ end
 # in production environments by default.
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'less-rails-fontawesome', :group => :assets
+  gem 'less-rails-fontawesome'
+  gem 'sass-rails'
+  gem 'coffee-script-source', '~> 1.4.0'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', :platforms => :ruby
