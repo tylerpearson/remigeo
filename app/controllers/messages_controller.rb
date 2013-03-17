@@ -9,9 +9,9 @@ class MessagesController < ApplicationController
     @searchterm = params[:search] if params[:search]
 
     if params[:search]
-      @messages = current_user.messages.search(params[:search]).where(visible: true)
+      @messages = current_user.messages.search(params[:search])
     else
-      @messages = current_user.messages.where(visible: true)
+      @messages = current_user.messages
     end
 
     respond_to do |format|
@@ -100,7 +100,7 @@ class MessagesController < ApplicationController
   # DELETE /messages/1.json
   def destroy
     @message = Message.find(params[:id])
-    @message.update_attributes(visible: false)
+    @message.destroy
 
     respond_to do |format|
       format.html { redirect_to messages_url }
@@ -129,8 +129,6 @@ class MessagesController < ApplicationController
 
   # hide messages
   def hide
-
-
 
   end
 

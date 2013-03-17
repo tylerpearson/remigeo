@@ -1,5 +1,5 @@
 class Message < ActiveRecord::Base
-  attr_accessible :content, :location_id, :user_id, :visible
+  attr_accessible :content, :location_id, :user_id
 
   default_scope order: 'created_at DESC'
 
@@ -10,17 +10,10 @@ class Message < ActiveRecord::Base
   validates :user_id, presence: true
   validates :location_id, presence: true
 
-  before_create :make_visible
-
 
   def self.search(search)
     where 'content LIKE ?', "%#{search}%"
   end
 
-  private
-
-    def make_visible
-      self.visible = true
-    end
 
 end
