@@ -26,6 +26,11 @@ gem 'figaro'
 gem 'json'
 gem 'less-rails'
 
+# for embedding json
+# To use Jbuilder templates for JSON
+gem 'jbuilder'
+gem 'gon'
+
 # server on dev and heroku
 gem 'thin'
 
@@ -66,8 +71,7 @@ gem 'jquery-rails'
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
+
 
 # Use unicorn as the app server
 # gem 'unicorn'

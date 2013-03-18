@@ -1,31 +1,45 @@
 $(".home").ready ->
 
-  console.log "we are on the home page"
+  console.log "Current page: home page"
 
-  m = mapbox.map('home-map').zoom(2).center({ lat: 39.870, lon: -98.759 })
-  m.addLayer(mapbox.layer().id('examples.map-vyofok3q'))
+  if $('#home-map').length
 
-  markerLayer = mapbox.markers.layer()
-  m.addLayer(markerLayer)
+    m = mapbox.map('home-map').zoom(2).center({ lat: 39.870, lon: -98.759 })
+    m.addLayer(mapbox.layer().id('examples.map-vyofok3q'))
 
-  unless navigator.geolocation
-    alert "This site requires geolocation to work."
-  else
-    navigator.geolocation.getCurrentPosition ((position) ->
+    markerLayer = mapbox.markers.layer()
+    mapbox.markers.interaction(markerLayer)
+    m.addLayer(markerLayer)
 
-      m.zoom(13).center
-        lat: position.coords.latitude
-        lon: position.coords.longitude
-
-      markerLayer.add_feature
-         geometry:
-           coordinates: [position.coords.longitude, position.coords.latitude]
-
-         properties:
-          "marker-color": "#168187"
-          "marker-symbol": "star-stroked"
-
-
-    ), (err) ->
-
+    unless navigator.geolocation
       alert "This site requires geolocation to work."
+    else
+      navigator.geolocation.getCurrentPosition ((position) ->
+
+        console.log "Current location: #{position.coords.latitude}, #{position.coords.longitude}"
+
+        m.zoom(13).center
+          lat: position.coords.latitude
+          lon: position.coords.longitude
+
+
+        for marker in gon.messages
+
+          console.log marker
+
+          markerLayer.add_feature
+             geometry:
+               coordinates: [marker.longitude, marker.latitude]
+
+             properties:
+              "marker-color": "#168187"
+              "marker-symbol": "star-stroked"
+              title: marker.name
+              description: marker.messages[0].content
+
+      ), (err) ->
+
+        alert "This site requires geolocation to work."
+
+    m.ui.attribution.add()
+        .content('<a href="http://mapbox.com/about/maps">Terms &amp; Feedback</a>');

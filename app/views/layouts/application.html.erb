@@ -13,6 +13,8 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 
+  <%= include_gon %>
+
   <% if user_signed_in? %>
   <%= javascript_include_tag "application" %>
   <% end %>
