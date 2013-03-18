@@ -12,7 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery-readyselector.js
 //= require autogrow
-//= require jquery.ui.map
-//= require messages.js
+//= require mapbox/mapbox.js
+//= require_tree ./home
+// require_tree ./messages
