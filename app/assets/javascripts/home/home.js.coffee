@@ -1,6 +1,6 @@
 $(".home").ready ->
 
-  console.log "Current page: home page"
+  console.log "home page"
 
   if $('#home-map').length
 
@@ -40,4 +40,4 @@ $(".home").ready ->
         alert "This site requires geolocation to work."
 
     m.ui.attribution.add()
-        .content('<a href="http://mapbox.com/about/maps">Terms &amp; Feedback</a>');
+        .content('<a href="http://mapbox.com/about/maps">Terms &amp; Feedback</a>')

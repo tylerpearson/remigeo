@@ -11,8 +11,11 @@ class MessagesController < ApplicationController
     if params[:search]
       @messages = current_user.messages.search(params[:search])
     else
-      @messages = current_user.messages
+      @messages  = current_user.messages
+      @locations = current_user.locations
     end
+
+    gon.jbuilder "app/views/messages/index.json.jbuilder", as: "messages"
 
     respond_to do |format|
       format.html # index.html.erb
