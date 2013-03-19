@@ -2,6 +2,8 @@ $('.new_message').ready ->
 
   console.log "new message form"
 
+  $('#message_content').css('overflow', 'hidden').autogrow()
+
   unless navigator.geolocation
     alert "This site requires geolocation to work."
   else
@@ -24,13 +26,12 @@ $('.new_message').ready ->
 # search locations
 searchLocations = (name,lat,long) ->
 
-  d = new Date()
-  currentDate = d.yyyymmdd()
+  apiDate = 20130318
 
   foursquareClientId     = "DHICGNZEQLALXKHTWVSQPBRJPDAUSSTP5U1WAHDT5YAUITUL"
   foursquareClientSecret = "QJJOUTWQ2RBIMQJ3ED3RWZBIDGG4ZLEXK3LJQSM3LGU4KOON"
 
-  searchQuery = "https://api.foursquare.com/v2/venues/suggestcompletion?ll=#{lat},#{long}&query=#{name}&client_id=#{foursquareClientId}&client_secret=#{foursquareClientSecret}&v=#{currentDate}&limit=50"
+  searchQuery = "https://api.foursquare.com/v2/venues/suggestcompletion?ll=#{lat},#{long}&query=#{name}&client_id=#{foursquareClientId}&client_secret=#{foursquareClientSecret}&v=#{apiDate}&limit=50"
 
   $.getJSON searchQuery, (data) ->
 
@@ -48,10 +49,3 @@ searchLocations = (name,lat,long) ->
     success:
 
       $(locations.join("")).appendTo($locations)
-
-# the date
-Date::yyyymmdd = ->
-  yyyy = @getFullYear().toString()
-  mm = (@getMonth() + 1).toString()
-  dd = @getDate().toString()
-  yyyy + ((if mm[1] then mm else "0" + mm[0])) + ((if dd[1] then dd else "0" + dd[0]))
