@@ -16,7 +16,4 @@
 //= require autogrow
 //= require mapbox/mapbox.js
 //= require_tree ./home
-//= require ./messages/new.js
-//= require ./messages/show.js
-//= require ./messages/index.js
-
+//= require_tree ./messages

@@ -5,7 +5,7 @@ $('.messages.index').ready ->
   if $('#map').length
 
     m = mapbox.map('map').zoom(4).center({ lat: 39.870, lon: -98.759 })
-    m.addLayer(mapbox.layer().id('tylerpearson.map-1simeiyt'))
+    m.addLayer(mapbox.layer().id('tylerpearson.map-3dokdyu1'))
 
     markerLayer = mapbox.markers.layer()
     mapbox.markers.interaction(markerLayer)
