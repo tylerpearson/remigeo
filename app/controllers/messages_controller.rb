@@ -28,11 +28,10 @@ class MessagesController < ApplicationController
     if current_user.id != @message.user_id
       redirect_to root_path
     else
+      gon.jbuilder "app/views/messages/show.json.jbuilder", as: "message"
       respond_to do |format|
         format.html # show.html.erb
-        format.json { render json: @message.to_json(:include => :location) }
       end
-
     end
   end
 

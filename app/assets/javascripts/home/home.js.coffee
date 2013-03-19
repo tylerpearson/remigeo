@@ -5,7 +5,7 @@ $(".home").ready ->
   if $('#home-map').length
 
     m = mapbox.map('home-map').zoom(2).center({ lat: 39.870, lon: -98.759 })
-    m.addLayer(mapbox.layer().id('examples.map-vyofok3q'))
+    m.addLayer(mapbox.layer().id('tylerpearson.map-1simeiyt'))
 
     markerLayer = mapbox.markers.layer()
     mapbox.markers.interaction(markerLayer)
@@ -25,15 +25,13 @@ $(".home").ready ->
 
         for marker in gon.messages
 
-          console.log marker
-
           markerLayer.add_feature
              geometry:
                coordinates: [marker.longitude, marker.latitude]
 
              properties:
               "marker-color": "#168187"
-              "marker-symbol": "star-stroked"
+              "marker-symbol": "post"
               title: marker.name
               description: marker.messages[0].content
 

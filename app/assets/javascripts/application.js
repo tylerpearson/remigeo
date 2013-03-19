@@ -17,3 +17,5 @@
 //= require mapbox/mapbox.js
 //= require_tree ./home
 //= require ./messages/newmessage.js
+//= require ./messages/show.js
+
